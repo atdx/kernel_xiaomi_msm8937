@@ -395,6 +395,24 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
 		   -std=gnu89
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, implicit-function-declaration )		
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, logical-not-parentheses  )
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, invalid-source-encoding )
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, sizeof-pointer-div )
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, macro-redefined )
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, pointer-bool-conversion )       
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, enum-conversion )  
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, constant-conversion )
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, parentheses-equality )
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, unused-function )
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, missing-declarations )
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, unused-variable )
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, self-assign )
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, implicit-fallthrough )
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, header-guard )	
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, strlcpy-strlcat-size )	
+KBUILD_CFLAGS += -Werror $(call cc-disable-warning, date-time )	
+	   
 KBUILD_CPPFLAGS := -D__KERNEL__
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
