@@ -13,7 +13,7 @@ jobs:
     - name: Setup build environment
       run: |
         sudo apt-get update
-        sudo apt-get install -y bc bison flex build-essential libncurses5-dev libssl-dev ccache unzip wget
+        sudo apt-get install -y bc bison flex build-essential libncurses5-dev libssl-dev ccache unzip wget libelf-dev
 
     - name: Download prebuilt GCC and Clang for arm64
       run: |
@@ -31,6 +31,10 @@ jobs:
         export OBJCOPY=llvm-objcopy
         export OBJDUMP=llvm-objdump
         export STRIP=llvm-strip
+
+    - name: Clean build directory
+      run: |
+        make O=out ARCH=arm64 mrproper
 
     - name: Build kernel
       run: |
