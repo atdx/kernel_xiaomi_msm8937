@@ -34,8 +34,12 @@ jobs:
 
     - name: Build kernel
       run: |
-        make O=out ARCH=arm64 CC=${CC} CROSS_COMPILE=${CROSS_COMPILE} defconfig
-        make -j$(nproc) O=out ARCH=arm64 CC=${CC} CROSS_COMPILE=${CROSS_COMPILE}
+        make O=out ARCH=arm64 CC=${CC} CROSS_COMPILE=${CROSS_COMPILE} LOCALVERSION=-custom defconfig
+        make -j$(nproc) O=out ARCH=arm64 CC=${CC} CROSS_COMPILE=${CROSS_COMPILE} V=1
+
+    - name: Install modules
+      run: |
+        sudo make O=out ARCH=arm64 modules_install
 
     - name: Create flashable zip
       run: |
